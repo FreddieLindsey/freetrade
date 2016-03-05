@@ -1,17 +1,17 @@
 default: &default
   adapter: postgresql
-  database: sharebuy_prod
+  database: freetrade_prod
   pool: 5
   host: localhost
   timeout: 5000
 
 development:
   <<: *default
-  database: sharebuy_dev
+  database: freetrade_dev
 
 test:
   <<: *default
-  database: sharebuy_test
+  database: freetrade_test
 
 production:
   host: <%= ENV["DATABASE_URL"] %>
