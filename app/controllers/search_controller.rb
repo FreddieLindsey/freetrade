@@ -32,11 +32,13 @@ class SearchController < ApplicationController
     items = response['ItemSearchResponse']['Items']['Item']
 
     results = []
-    items.each do |i|
-      item = {}
-      item['ASIN'] = i['ASIN']
-      item['title'] = i['ItemAttributes']['Title']
-      results.push(item)
+    if items.length > 0
+      items.each do |i|
+        item = {}
+        item['ASIN'] = i['ASIN']
+        item['title'] = i['ItemAttributes']['Title']
+        results.push(item)
+      end
     end
 
     render  json: { items: results },
