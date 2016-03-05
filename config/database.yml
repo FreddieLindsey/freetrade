@@ -1,14 +1,17 @@
 default: &default
   adapter: postgresql
-  database: rails-server-api_prod
+  database: sharebuy_prod
   pool: 5
   host: localhost
   timeout: 5000
 
 development:
   <<: *default
-  database: rails-server-api_dev
+  database: sharebuy_dev
 
 test:
   <<: *default
-  database: rails-server-api_test
+  database: sharebuy_test
+
+production:
+  host: <%= ENV["DATABASE_URL"] %>
