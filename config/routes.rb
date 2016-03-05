@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'searchopts', to: 'search#indices'
+  get 'search', to: 'search#search'
+
   post 'products', to: 'products#index'
   post 'products/add'
   put 'products/edit'
