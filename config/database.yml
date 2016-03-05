@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  database: rails-server-api_prod
+  pool: 5
+  host: localhost
+  timeout: 5000
+
+development:
+  <<: *default
+  database: rails-server-api_dev
+
+test:
+  <<: *default
+  database: rails-server-api_test
