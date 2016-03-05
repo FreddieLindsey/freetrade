@@ -1,1 +1,1 @@
-# freetrade
+# rails-sample-app
