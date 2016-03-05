@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  get 'products/index'
-
-  get 'products/add'
-
-  get 'products/edit'
-
-  get 'products/delete'
+  get 'products', to: 'products#index'
+  post 'products/add'
+  put 'products/edit'
+  delete 'products/delete'
 
   put 'users/:id', to: 'user#edit'
   delete 'users/:id', to: 'user#delete'
