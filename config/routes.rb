@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  post 'searchopts', to: 'search#indices'
-  post 'search', to: 'search#search'
+  post 'api/searchopts', to: 'search#indices'
+  post 'api/search', to: 'search#search'
 
-  post 'products', to: 'products#index'
-  post 'products/add'
-  put 'products/edit'
-  delete 'products/delete'
+  post 'api/products', to: 'products#index'
+  post 'api/products/add'
+  put 'api/products/edit'
+  delete 'api/products/delete'
 
   put 'users/:id', to: 'user#edit'
   delete 'users/:id', to: 'user#delete'
