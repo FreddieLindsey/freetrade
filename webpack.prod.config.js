@@ -51,7 +51,7 @@ options.plugins = [
   new ExtractTextPlugin('style.css', { allChunks: true })
 ];
 
-options.output.path = path.join(__dirname, 'dist');
+options.output.path = path.join(__dirname, 'public/dist');
 
 delete options.output.publicPath;
 delete options.debug;
