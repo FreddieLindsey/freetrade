@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'products', to: 'products#index'
+  post 'products', to: 'products#index'
   post 'products/add'
   put 'products/edit'
   delete 'products/delete'
