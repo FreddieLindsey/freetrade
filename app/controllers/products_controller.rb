@@ -92,7 +92,7 @@ class ProductsController < ApplicationController
   def destroy
     u = get_user params[:facebook_id]
     unless u.nil?
-      product = Product.find_by(id: params[:id], user_id: u.id)
+      product = ProductAssociation.find_by(product_id: params[:id], user_id: u.id)
       p = product.destroy
       render  json: { product: p },
               status: :bad_request,
