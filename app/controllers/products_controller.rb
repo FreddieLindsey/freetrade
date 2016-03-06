@@ -89,6 +89,22 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    u = get_user params[:facebook_id]
+    unless u.nil?
+      product = Product.find_by(id: params[:id], user_id: u.id)
+      p = product.destroy
+      render  json: { product: p },
+              status: :bad_request,
+              content_type: 'text/json'
+      return
+    else
+      render  json: { message: "No user found: id #{params[:facebook_id]}" },
+              status: :bad_request,
+              content_type: 'text/json'
+    end
+  end
+
   def get_user(id)
     if !id
       render  json: { message: "No id given" },
