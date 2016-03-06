@@ -47,7 +47,8 @@ class ProductsController < ApplicationController
         end_date: params[:end_date],
         probability: params[:probability]
       )
-      render  json: { product: product, association: pa },
+      render  json: { product: product, association: pa,
+                      discount: product.discount },
               status: 200,
               content_type: 'text/json'
       return
