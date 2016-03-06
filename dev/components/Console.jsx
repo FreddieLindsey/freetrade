@@ -15,6 +15,7 @@ export default class Console extends React.Component {
             <Link to="/console/">Data Overview</Link>
             <Link to="/console/reports">Reports</Link>
             <Link to="/console/discounts">Discounts</Link>
+            <Link to="/console/products">Products</Link>
           </div>
           <div className="console-content">
             { this.props.children }
