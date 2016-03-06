@@ -2,10 +2,16 @@
 
 %discount-container {
   background-color: lighten($background-colour, 20%);
+  box-shadow: 0 0 15px darken($background-colour, 20%);
   box-sizing: border-box;
+  font-size: 16px;
   margin: 20px 0;
   padding: 10px 5px;
   width: 100%;
+
+  hr {
+    margin: 0;
+  }
 }
 
 .discount-add-container {
@@ -15,4 +21,11 @@
 
 .discount-list-container {
   @extend %discount-container;
+}
+
+.discount-add-input {
+  border: 0;
+  box-sizing: border-box;
+  padding: 4px;
+  width: 100%;
 }
