@@ -125,7 +125,8 @@ export default class Products extends React.Component {
       return
     }
     let productsFiltered = this.state.products.filter((d) => {
-      return d.product.name.indexOf(filter) !== -1;
+      let name = d.name.toLowerCase()
+      return name.indexOf(filter.toLowerCase()) !== -1;
     });
     this.setState({
       productsFiltered: productsFiltered
