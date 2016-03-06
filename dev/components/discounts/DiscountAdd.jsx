@@ -11,6 +11,9 @@ export default class DiscountAdd extends React.Component {
   render() {
     return (
       <div className="discount-add-container" >
+        <div className="discount-add-container-title">
+          Add a new discount
+        </div>
         <input
           className="discount-add-input" value={ this.props.asin }
           onChange={ this.props.add } placeholder="ASIN (Amazon Identifier)" />

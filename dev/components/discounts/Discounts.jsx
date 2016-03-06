@@ -31,7 +31,11 @@ export default class Discounts extends React.Component {
     // Retrieves discounts from server and resets search
     $.ajax({
       url: '/api/discounts'
-    }).done((discounts) => {
+    }).done((res) => {
+      let discounts = res.discounts;
+      for (let i = 0; i < discounts.length; i++) {
+        discounts[i].product = res.products[i];
+      } // Disgusting
       discounts.sort(compareDiscounts);
       this.setState({
         discounts: discounts,
@@ -52,7 +56,7 @@ export default class Discounts extends React.Component {
       return
     }
     let discountsFiltered = this.state.discounts.filter((d) => {
-      return d.name.indexOf(filter) !== -1;
+      return d.product.name.indexOf(filter) !== -1;
     });
     this.setState({
       discountsFiltered: discountsFiltered

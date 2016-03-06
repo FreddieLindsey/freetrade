@@ -12,7 +12,7 @@ export default class DiscountSearch extends React.Component {
       <div className="discount-add-container" >
         <input
           className="discount-add-input" value={ this.props.value }
-          onKeyDown={ this.props.filter } placeholder="Search discounts by keyword (title)" />
+          onChange={ this.props.filter } placeholder="Search discounts by keyword (title)" />
       </div>
     );
   }
