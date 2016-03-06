@@ -1,0 +1,18 @@
+@import '../../style/colours';
+
+%discount-container {
+  background-color: lighten($background-colour, 20%);
+  box-sizing: border-box;
+  margin: 20px 0;
+  padding: 10px 5px;
+  width: 100%;
+}
+
+.discount-add-container {
+  @extend %discount-container;
+  margin-top: 0;
+}
+
+.discount-list-container {
+  @extend %discount-container;
+}
