@@ -1,0 +1,2 @@
+module ProductAdminHelper
+end

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'api/products', to: 'product_admin#index'
+  get 'api/products/create', to: 'product_admin#create'
+  get 'api/products/edit/:id', to: 'product_admin#edit'
+  get 'api/products/delete/:id', to: 'product_admin#destroy'
+
   get 'api/discounts', to: 'discounts#index'
   post 'api/discounts/create', to: 'discounts#create'
   put 'api/discounts/edit/:id', to: 'discounts#edit'

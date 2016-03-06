@@ -32,9 +32,6 @@ export default class Products extends React.Component {
       url: '/api/products'
     }).done((res) => {
       let products = res.products;
-      for (let i = 0; i < products.length; i++) {
-        products[i].product = res.products[i];
-      } // Disgusting
       products.sort(compareProducts);
       this.setState({
         asin: '',
@@ -63,7 +60,6 @@ export default class Products extends React.Component {
     }).done((res) => {
       let products = this.state.products;
       let product = res.product;
-      product.product = res.product;
       products = products.filter((d) => {
         return d.id != product.id
       })

@@ -13,17 +13,15 @@ export default class ProductListItem extends React.Component {
 
   render() {
     let d = this.props.product;
-    let d_ = new Date(d.expiry);
-    d_ = d_.toLocaleDateString();
     return (
       <div className="product-list-item-container" >
         <div className="product-list-item-titles" >
           <div className="product-list-item-name" >
-            { d.product.name }
+            { d.name }
           </div>
         </div>
         <div className="product-list-item-date">
-          <mark> { d.rate * 100 }%</mark> off until { d_ }
+          <mark>ASIN: { d.asin }</mark>
         </div>
         <button className="fa fa-lg fa-times-circle-o product-list-item-delete"
           onClick={ this.props.delete } />

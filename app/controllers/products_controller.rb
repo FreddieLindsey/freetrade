@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
     u = get_user params[:facebook_id]
     unless u.nil?
       products = u.product.includes(:discount)
-      render  json: { products: products },
+      discounts = []
+      if products.length > 0
+        products.each do |p|
+          discounts.push(p.discount)
+        end
+      end
+      render  json: { products: products, discounts: discounts },
               status: 200,
               content_type: 'text/json'
     else

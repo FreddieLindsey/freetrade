@@ -27,7 +27,8 @@
     text-align: center;
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       background-color: lighten($console-nav-colour, 20%);
       color: $colour-black;
       transition: background-color 1s ease;
