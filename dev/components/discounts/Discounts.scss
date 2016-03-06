@@ -1,0 +1,79 @@
+@import '../../style/colours';
+
+%discount-container {
+  background-color: lighten($background-colour, 20%);
+  box-shadow: 0 0 15px darken($background-colour, 20%);
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 20px 0;
+  padding: 10px 5px;
+  width: 100%;
+
+  hr {
+    margin: 2px 0;
+  }
+}
+
+.discount-add-container {
+  @extend %discount-container;
+  margin-top: 0;
+}
+
+.discount-list-container {
+  @extend %discount-container;
+}
+
+.discount-add-input {
+  border: 0;
+  box-sizing: border-box;
+  padding: 4px;
+  width: 100%;
+}
+
+.discount-add-input-half {
+  @extend .discount-add-input;
+  width: 50%;
+}
+
+.discount-add-container-title,
+.discount-list-noitems {
+  text-align: center;
+  width: 100%;
+}
+
+.discount-list-item-container {
+  align-items: center;
+  border-top: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+  padding: 8px 2px;
+  width: 100%;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  .discount-list-item-titles {
+    float: left;
+    width: 70%;
+  }
+
+  .discount-list-item-date {
+    border-left: 1px solid black;
+    box-sizing: border-box;
+    padding: 0 10px;
+    float: left;
+    text-align: center;
+    width: 25%;
+  }
+
+  .discount-list-item-delete {
+    background-color: lighten($background-colour, 20%);
+    border: 0;
+    border-left: 1px solid black;
+    box-sizing: border-box;
+    padding: 0 10px;
+    float: left;
+    width: 5%;
+  }
+}

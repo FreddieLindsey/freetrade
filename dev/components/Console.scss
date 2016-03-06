@@ -1,0 +1,52 @@
+@import '../style/colours';
+
+.console-container {
+  background-color: $background-colour;
+  display: flex;
+  width: 100%;
+
+  .console-nav,
+  .console-content {
+    min-height: calc(100vh);
+  }
+}
+
+.console-nav {
+  background-color: $console-nav-colour;
+  box-shadow: $console-nav-shadow-colour;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding-top: 10px;
+  width: 225px;
+
+  a {
+    border-top: 1px solid black;
+    color: $colour-white;
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+
+    &:hover,
+    &:active {
+      background-color: lighten($console-nav-colour, 20%);
+      color: $colour-black;
+      transition: background-color 1s ease;
+      transition: color 0.5s linear;
+    }
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+.console-content {
+  box-sizing: border-box;
+  padding: 20px;
+  width: calc(100vw - 225px);
+}
+
+.console-content-container {
+  margin: auto;
+  max-width: 800px;
+}

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'api/discounts', to: 'discounts#index'
+  post 'api/discounts/create', to: 'discounts#create'
+  put 'api/discounts/edit/:id', to: 'discounts#edit'
+  delete 'api/discounts/delete/:id', to: 'discounts#delete'
+
   post 'api/searchopts', to: 'search#indices'
   post 'api/search', to: 'search#search'
   post 'api/search/images', to: 'search#images'
@@ -10,4 +15,7 @@ Rails.application.routes.draw do
   put 'users/:id', to: 'user#edit'
   delete 'users/:id', to: 'user#delete'
   post 'users', to: 'user#create'
+
+  get '*path', to: 'static#application', via: :all
+  root 'static#application'
 end

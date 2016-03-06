@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     u = get_user params[:facebook_id]
     unless u.nil?
       products = u.product.includes(:discount)
-      render  json: { products: products, message: "It is the client's fault! Typical user error" },
+      render  json: { products: products },
               status: 200,
               content_type: 'text/json'
     else

@@ -1,0 +1,29 @@
+@import './colours';
+
+body {
+  font-family: 'Roboto', Helvetica, serif;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    color: $colour-black;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+input {
+  &:active,
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
