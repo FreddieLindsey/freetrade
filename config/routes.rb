@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'api/wishlist', to: 'products#index'
   post 'api/wishlist/add', to: 'products#add'
   post 'api/wishlist/edit/:id', to: 'products#edit'
+  post 'api/wishlist/destroy/:id', to: 'products#destroy'
 
   put 'users/:id', to: 'user#edit'
   delete 'users/:id', to: 'user#delete'
