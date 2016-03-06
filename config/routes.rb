@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   delete 'users/:id', to: 'user#delete'
   post 'users', to: 'user#create'
 
-  root 'static#console'
-  # get 'console', to: 'static#console'
+  get '*path', to: 'static#application', via: :all
+  root 'static#application'
 end

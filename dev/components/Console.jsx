@@ -1,24 +1,23 @@
 require("./Console.scss");
 import React from 'react';
-import { Router, Link, Route, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
-import ConsoleHome from './console/ConsoleHome';
-
-export default class ConsoleView extends React.Component {
+export default class Console extends React.Component {
   static displayName = 'Console Application';
+  static propTypes = {
+    children: React.PropTypes.object
+  };
 
   render() {
     return (
       <div className="console-container">
           <div className="console-nav">
-            <Link to="home">Summary</Link>
-            <Link to="reports">Reports</Link>
+            <Link to="/console/">Data Overview</Link>
+            <Link to="/console/reports">Reports</Link>
+            <Link to="/console/discounts">Discounts</Link>
           </div>
           <div className="console-content">
-            <Router history={browserHistory} >
-              <Route name="home" path="/" component={ConsoleHome} />
-              <Route name="reports" path="/reports" component={ConsoleHome} />
-            </Router>
+            { this.props.children }
           </div>
       </div>
     );

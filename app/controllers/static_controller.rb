@@ -1,4 +1,4 @@
 class StaticController < ApplicationController
-  def console
+  def application
   end
 end
