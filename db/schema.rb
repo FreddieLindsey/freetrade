@@ -11,16 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305172933) do
+ActiveRecord::Schema.define(version: 20160306015505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "discounts", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "expiry"
+    t.float    "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "discounts", ["product_id"], name: "index_discounts_on_product_id", using: :btree
+
+  create_table "product_associations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.boolean  "complete"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.float    "probability"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "product_associations", ["product_id"], name: "index_product_associations_on_product_id", using: :btree
+  add_index "product_associations", ["user_id"], name: "index_product_associations_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "asin"
+    t.string   "url"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
@@ -31,5 +57,8 @@ ActiveRecord::Schema.define(version: 20160305172933) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "discounts", "products"
+  add_foreign_key "product_associations", "products"
+  add_foreign_key "product_associations", "users"
   add_foreign_key "products", "users"
 end
