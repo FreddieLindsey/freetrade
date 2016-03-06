@@ -5,7 +5,7 @@ require("expose?jQuery!jquery"); // Bootstrap requirement
 require("./index.scss");
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import Console from './components/Console.jsx';
 
-// Load App
-ReactDOM.render(<App />, document.getElementById('root'));
+// Load Console
+ReactDOM.render(<Console />, document.getElementById('root'));
