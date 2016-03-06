@@ -4,8 +4,28 @@ export default class DiscountAdd extends React.Component {
   static displayName = 'DiscountAdd';
   static propTypes = {
     asin: React.PropTypes.string,
-    discount: React.PropTypes.number,
-    add: React.PropTypes.func
+    discount: React.PropTypes.string,
+    expiry: React.PropTypes.string,
+    add: React.PropTypes.func,
+    valueChange: React.PropTypes.func
+  }
+
+  handleChangeASIN = (e) => {
+    this.props.valueChange('asin', e.target.value);
+  }
+
+  handleChangeDiscount = (e) => {
+    this.props.valueChange('discount', e.target.value);
+  }
+
+  handleChangeExpiry = (e) => {
+    this.props.valueChange('expiry', e.target.value);
+  }
+
+  handleKeyDown = (e) => {
+    if (e.keyCode == 13) {
+      this.props.add()
+    }
   }
 
   render() {
@@ -16,11 +36,14 @@ export default class DiscountAdd extends React.Component {
         </div>
         <input
           className="discount-add-input" value={ this.props.asin }
-          onChange={ this.props.add } placeholder="ASIN (Amazon Identifier)" />
+          onChange={ this.handleChangeASIN } onKeyDown={ this.handleKeyDown } placeholder="ASIN (Amazon Identifier)" />
         <hr />
         <input
-          className="discount-add-input" value={ this.props.discount }
-          onChange={ this.props.add } placeholder="Discount value" />
+          className="discount-add-input-half" value={ this.props.discount }
+          onChange={ this.handleChangeDiscount } onKeyDown={ this.handleKeyDown } placeholder="Discount value (%)" />
+        <input
+          className="discount-add-input-half" value={ this.props.expiry }
+          onChange={ this.handleChangeExpiry } onKeyDown={ this.handleKeyDown } placeholder="Expiry date (YYYY-MM-DD)" />
       </div>
     );
   }

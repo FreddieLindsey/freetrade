@@ -38,6 +38,9 @@ export default class Discounts extends React.Component {
       } // Disgusting
       discounts.sort(compareDiscounts);
       this.setState({
+        asin: '',
+        discountNew: '',
+        expiry: '',
         discounts: discounts,
         discountsFiltered: discounts,
         searchValue: ''
@@ -45,6 +48,77 @@ export default class Discounts extends React.Component {
     }).fail((err) => {
       console.log(err);
     });
+  }
+
+  handleAdd = () => {
+    let discount = this.state.discountNew.match(/[0-1]{0,1}[0-9]{1,2}/g)[0]
+    let expiry = new Date(this.state.expiry);
+    $.ajax({
+      method: 'POST',
+      url: '/api/discounts/create',
+      data: {
+        asin: this.state.asin,
+        discount: parseInt(discount) / 100,
+        expiry: expiry.toISOString()
+      }
+    }).done((res) => {
+      let discounts = this.state.discounts;
+      let discount = res.discount;
+      discount.product = res.product;
+      discounts = discounts.filter((d) => {
+        return d.id != discount.id
+      })
+      discounts.unshift(discount);
+      this.setState({
+        asin: '',
+        expiry: '',
+        discountNew: '',
+        discounts: discounts,
+        discountsFiltered: discounts
+      });
+    }).fail((err) => {
+      alert(err);
+    })
+  }
+
+  handleChange = (stateVar, newValue) => {
+    switch(stateVar) {
+    case 'asin':
+      this.setState({
+        asin: newValue
+      });
+      break;
+    case 'discount':
+      this.setState({
+        discountNew: newValue
+      });
+      break;
+    case 'expiry':
+      this.setState({
+        expiry: newValue
+      });
+    }
+  }
+
+  handleDelete = (id) => {
+    $.ajax({
+      method: 'DELETE',
+      url: `/api/discounts/delete/${id}`
+    }).done((res) => {
+      let discounts = this.state.discounts;
+      discounts = discounts.filter((d) => {
+        return d.id != res.destroyed.id
+      });
+      this.setState({
+        asin: '',
+        expiry: '',
+        discountNew: '',
+        discounts: discounts,
+        discountsFiltered: discounts
+      });
+    }).fail((err) => {
+      alert(err);
+    })
   }
 
   handleFilter = (input) => {
@@ -66,9 +140,14 @@ export default class Discounts extends React.Component {
   render() {
     return (
       <div className="console-content-container" >
-        <DiscountAdd />
+        <DiscountAdd
+          add={ this.handleAdd } valueChange={ this.handleChange }
+          asin={ this.state.asin } discount={ this.state.discount }
+          expiry={ this.state.expiry }
+          />
         <DiscountSearch filter={ this.handleFilter } />
-        <DiscountList discounts={ this.state.discountsFiltered }/>
+        <DiscountList discounts={ this.state.discountsFiltered }
+          delete={ this.handleDelete } />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import DiscountListItem from './DiscountListItem';
 export default class DiscountList extends React.Component {
   static displayName = 'DiscountList';
   static propTypes = {
+    delete: React.PropTypes.func,
     discounts: React.PropTypes.arrayOf(
       React.PropTypes.object
     )
@@ -17,7 +18,8 @@ export default class DiscountList extends React.Component {
         { this.props.discounts && this.props.discounts.length > 0 &&
           this.props.discounts.map((d) => {
             return (
-              <DiscountListItem key={ d.id } discount={ d } />
+              <DiscountListItem key={ d.id } discount={ d }
+                delete={ this.props.delete.bind(null, d.id) } />
             );
           })}
         { (!this.props.discounts || this.props.discounts.length == 0) &&

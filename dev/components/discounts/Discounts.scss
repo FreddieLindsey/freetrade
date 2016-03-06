@@ -30,6 +30,11 @@
   width: 100%;
 }
 
+.discount-add-input-half {
+  @extend .discount-add-input;
+  width: 50%;
+}
+
 .discount-add-container-title,
 .discount-list-noitems {
   text-align: center;
