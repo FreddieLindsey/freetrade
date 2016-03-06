@@ -39,8 +39,8 @@ class ProductsController < ApplicationController
   def edit
     u = get_user params[:facebook_id]
     unless u.nil?
-      product = Product.find_by(name: params[:name], user_id: u.id)
-      product.name = params[:name_new] if params[:name_new]
+      product = Product.find_by(id: params[:id], user_id: u.id)
+      product.name = params[:name] if params[:name_new]
       unless product.valid?
         render  json: { message: 'Product has invalid name', product_error: product.errors.full_messages },
                 status: :bad_request,
@@ -58,9 +58,6 @@ class ProductsController < ApplicationController
               status: :bad_request,
               content_type: 'text/json'
     end
-  end
-
-  def delete
   end
 
   def get_user(id)

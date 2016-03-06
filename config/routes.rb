@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   post 'api/search', to: 'search#search'
   post 'api/search/images', to: 'search#images'
 
-  post 'api/products', to: 'products#index'
-  post 'api/products/add'
-  put 'api/products/edit'
-  delete 'api/products/delete'
+  post 'api/wishlist', to: 'products#index'
+  post 'api/wishlist/add', to: 'products#add'
+  post 'api/wishlist/edit/:id', to: 'products#edit'
 
   put 'users/:id', to: 'user#edit'
   delete 'users/:id', to: 'user#delete'
