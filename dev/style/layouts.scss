@@ -1,0 +1,13 @@
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+}

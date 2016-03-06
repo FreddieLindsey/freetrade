@@ -1,0 +1,32 @@
+@import '../style/colours';
+
+.console-container {
+  background-color: $background-colour;
+  display: flex;
+  width: 100%;
+
+  .console-nav,
+  .console-content {
+    min-height: calc(100vh);
+    padding: 20px;
+  }
+}
+
+.console-nav {
+  background-color: $console-nav-colour;
+  box-shadow: $console-nav-shadow-colour;
+  box-sizing: border-box;
+  width: 200px;
+
+  a {
+    display: block;
+    margin: auto;
+    padding: 5px 0;
+    text-align: center;
+  }
+}
+
+.console-content {
+  box-sizing: border-box;
+  width: calc(100vw - 200px);
+}
