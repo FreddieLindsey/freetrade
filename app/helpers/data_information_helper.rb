@@ -1,0 +1,2 @@
+module DataInformationHelper
+end

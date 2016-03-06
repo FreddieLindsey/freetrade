@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'data_information/popular_products'
+
   get 'api/products', to: 'product_admin#index'
   get 'api/products/create', to: 'product_admin#create'
   get 'api/products/edit/:id', to: 'product_admin#edit'

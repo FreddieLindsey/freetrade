@@ -12,8 +12,8 @@ export default class Console extends React.Component {
     return (
       <div className="console-container">
           <div className="console-nav">
-            <Link to="/console/">Data Overview</Link>
-            <Link to="/console/reports">Reports</Link>
+            <Link to="/console">Data Overview</Link>
+            {/*<Link to="/console/reports">Reports</Link>*/}
             <Link to="/console/discounts">Discounts</Link>
             <Link to="/console/products">Products</Link>
           </div>
